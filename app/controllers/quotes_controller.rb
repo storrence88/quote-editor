@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class QuotesController < ApplicationController
-  before_action :set_quote, only: [:show, :edit, :update, :destroy]
+  before_action :set_quote, only: %i[show edit update destroy]
 
   # GET /quotes
   # GET /quotes.json
@@ -29,7 +31,7 @@ class QuotesController < ApplicationController
     if @quote.save
       redirect_to quotes_path, notice: "Quote was successfully created."
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 

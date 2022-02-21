@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "application_system_test_case"
 
 class QuotesTest < ApplicationSystemTestCase
@@ -10,7 +12,7 @@ class QuotesTest < ApplicationSystemTestCase
     # we expect to see a title with the text "Quotes"
     visit quotes_path
     assert_selector "h1", text: "Quotes"
-    
+
     # When we click on the link with the text "New Quote"
     # we expect to land on a page with the title "New Quote"
     click_on "New quote"

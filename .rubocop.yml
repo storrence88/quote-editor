@@ -1,0 +1,45 @@
+require: rubocop-rails
+AllCops:
+  NewCops: enable
+  Exclude:
+    - 'db/seeds.rb'
+    - 'db/schema.rb'
+    - 'db/migrate/**/*'
+    - 'config/**/*'
+    - 'bin/**/*'
+    - 'Gemfile'
+    - 'Guardfile'
+    - 'vendor/**/*'
+    - 'tmp/**/*'
+    - 'node_modules/**/*'
+    - 'test/fixtures/**/*'
+Rails:
+  Enabled: true
+Style/EmptyMethod:
+  Enabled: false
+Style/PercentLiteralDelimiters:
+  Enabled: false
+Style/Documentation:
+  Enabled: false
+Layout/LineLength:
+  Max: 120
+Style/CollectionMethods:
+  Enabled: false
+Style/Lambda:
+  Enabled: false
+Metrics/AbcSize:
+  Enabled: false
+Metrics/CyclomaticComplexity:
+  Enabled: false
+Metrics/MethodLength:
+  Enabled: true
+  Max: 60
+Metrics/ClassLength:
+  Enabled: true
+  Max: 250
+Style/WordArray:
+  Enabled: false
+Metrics/PerceivedComplexity:
+  Enabled: false
+Style/StringLiterals:
+  Enabled: false
