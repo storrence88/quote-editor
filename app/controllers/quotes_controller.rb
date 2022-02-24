@@ -6,7 +6,7 @@ class QuotesController < ApplicationController
   # GET /quotes
   # GET /quotes.json
   def index
-    @quotes = Quote.all
+    @quotes = Quote.ordered
   end
 
   # GET /quotes/1
@@ -28,10 +28,13 @@ class QuotesController < ApplicationController
   def create
     @quote = Quote.new(quote_params)
 
-    if @quote.save
-      redirect_to quotes_path, notice: "Quote was successfully created."
-    else
-      render :new, status: :unprocessable_entity
+    respond_to do |format|
+      if @quote.save
+        format.html { redirect_to quotes_path, notice: "Quote was successfully created." }
+        format.turbo_stream
+      else
+        format.html { render :new, status: :unprocessable_entity }
+      end
     end
   end
 
@@ -49,7 +52,11 @@ class QuotesController < ApplicationController
   # DELETE /quotes/1.json
   def destroy
     @quote.destroy
-    redirect_to quotes_url, notice: "Quote was successfully destroyed."
+
+    respond_to do |format|
+      format.html { redirect_to quotes_url, notice: "Quote was successfully destroyed." }
+      format.turbo_stream
+    end
   end
 
   private
