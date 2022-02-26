@@ -6,7 +6,7 @@ class QuotesController < ApplicationController
   # GET /quotes
   # GET /quotes.json
   def index
-    @quotes = Quote.ordered
+    @quotes = current_company.quotes.ordered
   end
 
   # GET /quotes/1
@@ -26,7 +26,7 @@ class QuotesController < ApplicationController
   # POST /quotes
   # POST /quotes.json
   def create
-    @quote = Quote.new(quote_params)
+    @quote = current_company.quotes.build(quote_params)
 
     respond_to do |format|
       if @quote.save
@@ -62,7 +62,7 @@ class QuotesController < ApplicationController
   private
 
   def set_quote
-    @quote = Quote.find(params[:id])
+    @quote = current_company.quotes.find(params[:id])
   end
 
   def quote_params
